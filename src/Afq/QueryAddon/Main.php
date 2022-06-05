@@ -17,14 +17,14 @@ class Main extends PluginBase implements Listener{
             $this->config = (new Config($this->getDataFolder() . "Config.yml", Config::YAML, [
             ## BY AFQ ❤️ 
 "infinite slots"=> true,
-## If this option is set to true, the max players slots will be 1 above the player count that is currently online. So it'd look like this: 0/1. If one person joined, it'll be 1/2, etc.
+## If this option is set to true, the max players slots will be 1 more than the amounts of online players"fake players"=> true,
 
 "fake players"=> true,
 
 "minimum"=> 10,
 "maximum"=> 100
-# minimum number of fake players
-# maximum number of fake players
+## minimum number of fake players
+## maximum number of fake players
 
             ]));
         } else {
