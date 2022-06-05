@@ -17,14 +17,14 @@ class Main extends PluginBase implements Listener{
             $this->config = (new Config($this->getDataFolder() . "Config.yml", Config::YAML, [
             ## BY AFQ ❤️ 
 "infinite slots"=> true,
-## If this option is set to true, the max players slots will be 1 more than the amounts of online players"
+## If this option is set to true, the max players slots will be 1 above the player count that is currently online. So it'd look like this: 0/1. If one person joined, it'll be 1/2, etc.
 
 "fake players"=> true,
 
 "minimum"=> 10,
 "maximum"=> 100
-## minimum number of fake players
-## maximum number of fake players
+# minimum number of fake players
+# maximum number of fake players
 
             ]));
         } else {
@@ -33,8 +33,8 @@ class Main extends PluginBase implements Listener{
     }
         
    public function onQueryRegenerate(QueryRegenerateEvent $event) : void{   
-   $config = new Config($this->getDataFolder() . "config.yml", Config::YAML, []);
-		$config = new Config($this->getDataFolder() . "config.yml", Config::YAML, []);
+   $config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array());
+		$config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array());
         if($config->get("fake players") === true and $config->get("infinite slots") === false)
 {
         $minimum = $config->get("minimum");
@@ -48,8 +48,9 @@ class Main extends PluginBase implements Listener{
         $maximum = $config->get("maximum");
         $info = $event->getQueryInfo();
         $fake = mt_rand($minimum, $maximum);
-        $info->setPlayerCount($fake);
-        $info->setMaxPlayerCount($fake + 1);
+        $currentPlayerCount = count(Server::getInstance()->getOnlinePlayers());
+        $info->setPlayerCount($fake + $currentPlayerCount);
+        $info->setMaxPlayerCount($fake + $currentPlayerCount + 1);
 }
         if($config->get("infinite slots") === true and $config->get("fake players") === false)
 {
