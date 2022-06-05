@@ -33,8 +33,8 @@ class Main extends PluginBase implements Listener{
     }
         
    public function onQueryRegenerate(QueryRegenerateEvent $event) : void{   
-   $config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array());
-		$config = new Config($this->getDataFolder() . "config.yml", Config::YAML, array());
+   $config = new Config($this->getDataFolder() . "config.yml", Config::YAML, []);
+		$config = new Config($this->getDataFolder() . "config.yml", Config::YAML, []);
         if($config->get("fake players") === true and $config->get("infinite slots") === false)
 {
         $minimum = $config->get("minimum");
