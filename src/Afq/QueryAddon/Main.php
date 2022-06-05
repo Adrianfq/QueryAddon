@@ -17,7 +17,7 @@ class Main extends PluginBase implements Listener{
             $this->config = (new Config($this->getDataFolder() . "Config.yml", Config::YAML, [
             ## BY AFQ ❤️ 
 "infinite slots"=> true,
-## If this option is set to true, the max players slots will be 1 more than the amounts of online players"fake players"=> true,
+## If this option is set to true, the max players slots will be 1 more than the amounts of online players"
 
 "fake players"=> true,
 
